@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CPIStudent_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer30028452">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="CType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExpDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MovieOrders30028452">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="MovieId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="MovieId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders30028452">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Movie_Orders30028452">
+          <End Role="Orders30028452" Type="Self.Orders30028452" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MovieOrders30028452" Type="Self.MovieOrders30028452" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders30028452">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="MovieOrders30028452">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customer30028452">
+          <End Role="Customer30028452" Type="Self.Customer30028452" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders30028452" Type="Self.Orders30028452" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer30028452">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Orders30028452">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CPIStudent_dbModelStoreContainer">
+          <EntitySet Name="Customer30028452" EntityType="Self.Customer30028452" Schema="CPIStudent" store:Type="Tables" />
+          <EntitySet Name="MovieOrders30028452" EntityType="Self.MovieOrders30028452" Schema="CPIStudent" store:Type="Tables" />
+          <EntitySet Name="Orders30028452" EntityType="Self.Orders30028452" Schema="CPIStudent" store:Type="Tables" />
+          <AssociationSet Name="FK_Movie_Orders30028452" Association="Self.FK_Movie_Orders30028452">
+            <End Role="Orders30028452" EntitySet="Orders30028452" />
+            <End Role="MovieOrders30028452" EntitySet="MovieOrders30028452" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customer30028452" Association="Self.FK_Orders_Customer30028452">
+            <End Role="Customer30028452" EntitySet="Customer30028452" />
+            <End Role="Orders30028452" EntitySet="Orders30028452" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CPIStudent_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer30028452">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExpDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Orders30028452" Relationship="Self.FK_Orders_Customer30028452" FromRole="Customer30028452" ToRole="Orders30028452" />
+        </EntityType>
+        <EntityType Name="MovieOrders30028452">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="MovieId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="MovieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders30028452" Relationship="Self.FK_Movie_Orders30028452" FromRole="MovieOrders30028452" ToRole="Orders30028452" />
+        </EntityType>
+        <EntityType Name="Orders30028452">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer30028452" Relationship="Self.FK_Orders_Customer30028452" FromRole="Orders30028452" ToRole="Customer30028452" />
+          <NavigationProperty Name="MovieOrders30028452" Relationship="Self.FK_Movie_Orders30028452" FromRole="Orders30028452" ToRole="MovieOrders30028452" />
+        </EntityType>
+        <Association Name="FK_Orders_Customer30028452">
+          <End Role="Customer30028452" Type="Self.Customer30028452" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders30028452" Type="Self.Orders30028452" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer30028452">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Orders30028452">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movie_Orders30028452">
+          <End Role="Orders30028452" Type="Self.Orders30028452" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MovieOrders30028452" Type="Self.MovieOrders30028452" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders30028452">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="MovieOrders30028452">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CPIStudent_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer30028452" EntityType="Self.Customer30028452" />
+          <EntitySet Name="MovieOrders30028452" EntityType="Self.MovieOrders30028452" />
+          <EntitySet Name="Orders30028452" EntityType="Self.Orders30028452" />
+          <AssociationSet Name="FK_Orders_Customer30028452" Association="Self.FK_Orders_Customer30028452">
+            <End Role="Customer30028452" EntitySet="Customer30028452" />
+            <End Role="Orders30028452" EntitySet="Orders30028452" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movie_Orders30028452" Association="Self.FK_Movie_Orders30028452">
+            <End Role="Orders30028452" EntitySet="Orders30028452" />
+            <End Role="MovieOrders30028452" EntitySet="MovieOrders30028452" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CPIStudent_dbModelStoreContainer" CdmEntityContainer="CPIStudent_dbEntities">
+          <EntitySetMapping Name="Customer30028452">
+            <EntityTypeMapping TypeName="CPIStudent_dbModel.Customer30028452">
+              <MappingFragment StoreEntitySet="Customer30028452">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovieOrders30028452">
+            <EntityTypeMapping TypeName="CPIStudent_dbModel.MovieOrders30028452">
+              <MappingFragment StoreEntitySet="MovieOrders30028452">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders30028452">
+            <EntityTypeMapping TypeName="CPIStudent_dbModel.Orders30028452">
+              <MappingFragment StoreEntitySet="Orders30028452">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,207 @@
+﻿@charset "UTF-8";
+
+/* use this font for headings */
+@font-face {
+    font-family: MyBitter;
+    src: url('/Fonts/Bitter/Bitter-Regular.ttf');
+}
+table, .opaqueBlock {
+    z-index:100;
+    background-color:rgba(240, 240, 240, 0.97);
+}
+/* default formatting*/
+body {
+    background-color: #cccccc;
+    color: rgb(27, 27, 27);
+    font-family: Arial, 'Helvetica Neue LT Pro', sans-serif;
+    overflow-x: hidden;
+    font-size: 15px;
+}
+
+p {
+    padding: 5px;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(228, 228, 228);
+    height: 50px;
+}
+/* default horizontal rule format */
+hr {
+    color: #0059ff;
+    border: none;
+}
+
+/* default format for links */
+a:link, a:active, a:visited {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0077ff;
+}
+
+/* foreground color white for these elements */
+#Menu a:link, .Menu a:link, #Menu a:active, .Menu a:active, #Menu a:visited, .Menu a:visited, #Footer, .Button, a:hover {
+    color: white;
+}
+
+/* Orange border for these elements */
+.Content form input, .Content form select, .Content table {
+    color: black;
+    font-size: 15px;
+}
+
+
+/* Orange background color for these elements */
+#Menu ul, .Menu ul, #Footer, a[href]:hover, .Button {
+    background-color: #1962c0; /* Orange */
+}
+
+/*.Content form table */
+.Button {
+    border: 1px solid grey;
+}
+
+#Menu a[href]:hover, .Menu a[href]:hover {
+    background-color: #e1ff4c;
+    color: #ffffff;
+    padding-bottom: 22px;
+}
+
+/* format for the headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #0077ff;
+    font-weight: 25px;
+    padding: 5px;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2em;
+    padding: 5px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.7em;
+    padding: 5px;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    padding: 5px;
+    margin: 0;
+}
+
+h4 {
+    font-size: 1.3em;
+    padding: 5px;
+    margin: 0;
+}
+
+h5 {
+    font-size: 1.1em;
+    padding: 5px;
+    margin: 0;
+}
+
+h6 {
+    font-size: 1em;
+    padding: 5px;
+    margin: 0;
+}
+
+/* End of format for headings */
+
+/* Menu formatting */
+#Menu a:link, .Menu a:link, #Menu a:active, .Menu a:active, #Menu a:visited, .Menu a:visited {
+    font-weight: 600;
+}
+
+/* default formatting for the content table*/
+/*.Content table {
+    background-color: #f8f8f8;
+}*/
+
+th {
+    color: #ffffff;
+    padding: 5px;
+    background-color: #0c52d3;
+}
+
+.Help {
+    display: inline;
+    height: 1em;
+    width: 1em;
+    padding-left: .27em;
+    padding-right: .27em;
+    line-height: 1em;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    background-color: lightgrey;
+    color: white;
+    text-align: center;
+    vertical-align: bottom;
+    font-size: 1em;
+}
+
+.SelectedItem {
+    background-color: orange;
+    color: white;
+}
+
+.Item {
+    background-color: inherit;
+    color: inherit;
+}
+
+.AdminProductsListView, .AdminSuppliersListView {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+.AdminSuppliersListView {
+    font-size: 1em;
+    zoom: .95;
+}
+
+#SuccessTitle {
+    color: green;
+}
+
+.ListView {
+    border-color: #ff0000;
+}
+
+.FooterContainer {
+    color: #f5f5f5;
+    background-color: black;
+}
+
+.AdminSuppliersListView table, .AdminProductsListView table, .CustomersAdminListView table {
+    border: none;
+}
+
+.shopping-cart-nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 50px;
+    align-items: center;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0077ff;
+}
+
+.Content {
+    padding: 10px 20px 0 20px;
+}
